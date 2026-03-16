@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PhyrosClassroom.Households.Orchestration.Default\PhyrosClassroom.Households.Orchestration.Default.csproj" />
+    <ProjectReference Include="..\PhyrosClassroom.Households.Orchestration\PhyrosClassroom.Households.Orchestration.csproj" />
+    <ProjectReference Include="..\..\3-Engines\PhyrosClassroom.Households.Engines\PhyrosClassroom.Households.Engines.csproj" />
+    <ProjectReference Include="..\..\4-Infrastructure\PhyrosClassroom.Households.Infrastructure.Persistence\PhyrosClassroom.Households.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\..\5-Models\PhyrosClassroom.Households.Models\PhyrosClassroom.Households.Models.csproj" />
+    <PackageReference Include="coverlet.collector" Version="6.0.4" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,31 @@
+<Solution>
+  <Folder Name="/1-Presentation/">
+    <Project Path="1-Presentation/PhyrosClassroom.Households.Presentation.CommandApi.Tests/PhyrosClassroom.Households.Presentation.CommandApi.Tests.csproj" />
+    <Project Path="1-Presentation/PhyrosClassroom.Households.Presentation.CommandApi/PhyrosClassroom.Households.Presentation.CommandApi.csproj" />
+    <Project Path="1-Presentation/PhyrosClassroom.Households.Presentation.QueryApi.Tests/PhyrosClassroom.Households.Presentation.QueryApi.Tests.csproj" />
+    <Project Path="1-Presentation/PhyrosClassroom.Households.Presentation.QueryApi/PhyrosClassroom.Households.Presentation.QueryApi.csproj" />
+  </Folder>
+  <Folder Name="/2-Orchestration/">
+    <Project Path="2-Orchestration/PhyrosClassroom.Households.Orchestration.Default.Tests/PhyrosClassroom.Households.Orchestration.Default.Tests.csproj" />
+    <Project Path="2-Orchestration/PhyrosClassroom.Households.Orchestration.Default/PhyrosClassroom.Households.Orchestration.Default.csproj" />
+    <Project Path="2-Orchestration/PhyrosClassroom.Households.Orchestration/PhyrosClassroom.Households.Orchestration.csproj" />
+  </Folder>
+  <Folder Name="/3-Engines/">
+    <Project Path="3-Engines/PhyrosClassroom.Households.Engines.Default.Tests/PhyrosClassroom.Households.Engines.Default.Tests.csproj" />
+    <Project Path="3-Engines/PhyrosClassroom.Households.Engines.Default/PhyrosClassroom.Households.Engines.Default.csproj" />
+    <Project Path="3-Engines/PhyrosClassroom.Households.Engines/PhyrosClassroom.Households.Engines.csproj" />
+  </Folder>
+  <Folder Name="/4-Infrastructure/">
+    <Project Path="4-Infrastructure/PhyrosClassroom.Households.Infrastructure.Persistence.Default.Tests/PhyrosClassroom.Households.Infrastructure.Persistence.Default.Tests.csproj" />
+    <Project Path="4-Infrastructure/PhyrosClassroom.Households.Infrastructure.Persistence.Default/PhyrosClassroom.Households.Infrastructure.Persistence.Default.csproj" />
+    <Project Path="4-Infrastructure/PhyrosClassroom.Households.Infrastructure.Persistence/PhyrosClassroom.Households.Infrastructure.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/5-Models/">
+    <Project Path="5-Models/PhyrosClassroom.Households.Models.Tests/PhyrosClassroom.Households.Models.Tests.csproj" />
+    <Project Path="5-Models/PhyrosClassroom.Households.Models/PhyrosClassroom.Households.Models.csproj" />
+  </Folder>
+  <Project Path="PhyrosClassroom.Households.ApplicationCore/PhyrosClassroom.Households.ApplicationCore.csproj" />
+  <Project Path="PhyrosClassroom.Households.Composition/PhyrosClassroom.Households.Composition.csproj" />
+  <Project Path="PhyrosClassroom.Households.Host.CommandApi/PhyrosClassroom.Households.Host.CommandApi.csproj" />
+  <Project Path="PhyrosClassroom.Households.Host.QueryApi/PhyrosClassroom.Households.Host.QueryApi.csproj" />
+</Solution>

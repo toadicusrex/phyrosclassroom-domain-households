@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\2-Orchestration\PhyrosClassroom.Households.Orchestration\PhyrosClassroom.Households.Orchestration.csproj" />
+    <ProjectReference Include="..\2-Orchestration\PhyrosClassroom.Households.Orchestration.Default\PhyrosClassroom.Households.Orchestration.Default.csproj" />
+    <ProjectReference Include="..\3-Engines\PhyrosClassroom.Households.Engines\PhyrosClassroom.Households.Engines.csproj" />
+    <ProjectReference Include="..\3-Engines\PhyrosClassroom.Households.Engines.Default\PhyrosClassroom.Households.Engines.Default.csproj" />
+    <ProjectReference Include="..\4-Infrastructure\PhyrosClassroom.Households.Infrastructure.Persistence\PhyrosClassroom.Households.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\4-Infrastructure\PhyrosClassroom.Households.Infrastructure.Persistence.Default\PhyrosClassroom.Households.Infrastructure.Persistence.Default.csproj" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+</Project>

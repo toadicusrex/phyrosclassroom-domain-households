@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PhyrosClassroom.Households.Orchestration\PhyrosClassroom.Households.Orchestration.csproj" />
+    <ProjectReference Include="..\..\3-Engines\PhyrosClassroom.Households.Engines\PhyrosClassroom.Households.Engines.csproj" />
+    <ProjectReference Include="..\..\4-Infrastructure\PhyrosClassroom.Households.Infrastructure.Persistence\PhyrosClassroom.Households.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\..\5-Models\PhyrosClassroom.Households.Models\PhyrosClassroom.Households.Models.csproj" />
+  </ItemGroup>
+</Project>
