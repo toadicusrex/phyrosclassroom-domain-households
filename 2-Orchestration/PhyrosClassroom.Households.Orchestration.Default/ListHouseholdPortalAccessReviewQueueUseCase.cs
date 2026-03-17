@@ -11,7 +11,7 @@ public sealed class ListHouseholdPortalAccessReviewQueueUseCase(IHouseholdReadMo
 
         return households
             .SelectMany(household => (household.Contacts ?? [])
-                .Where(contact => contact.WantsPortalAccess)
+                .Where(contact => contact.WantsPortalAccess && IsPending(contact.PortalAccessStatus))
                 .Select(contact =>
                 {
                     var inviteEmail = !string.IsNullOrWhiteSpace(contact.Email)
@@ -34,6 +34,8 @@ public sealed class ListHouseholdPortalAccessReviewQueueUseCase(IHouseholdReadMo
                         contact.IsEmergencyContact,
                         readyForInvite,
                         readyForInvite ? "Ready" : "MissingEmail",
+                        NormalizeStatus(contact.PortalAccessStatus),
+                        contact.PortalAccessReviewNotes,
                         household.UpdatedAtUtc ?? household.RegisteredAtUtc);
                 }))
             .OrderByDescending(item => item.ReadyForInvite)
@@ -41,4 +43,11 @@ public sealed class ListHouseholdPortalAccessReviewQueueUseCase(IHouseholdReadMo
             .ThenBy(item => item.FullName, StringComparer.OrdinalIgnoreCase)
             .ToArray();
     }
+
+    private static bool IsPending(string? status) =>
+        string.IsNullOrWhiteSpace(status) ||
+        string.Equals(status.Trim(), "Pending", StringComparison.OrdinalIgnoreCase);
+
+    private static string NormalizeStatus(string? status) =>
+        string.IsNullOrWhiteSpace(status) ? "Pending" : status.Trim();
 }

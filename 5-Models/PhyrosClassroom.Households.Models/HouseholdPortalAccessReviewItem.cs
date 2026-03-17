@@ -13,4 +13,6 @@ public sealed record HouseholdPortalAccessReviewItem(
     bool IsEmergencyContact,
     bool ReadyForInvite,
     string InviteReadiness,
+    string PortalAccessStatus,
+    string? PortalAccessReviewNotes,
     DateTimeOffset UpdatedAtUtc);

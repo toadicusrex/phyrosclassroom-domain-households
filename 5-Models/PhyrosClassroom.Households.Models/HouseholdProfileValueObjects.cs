@@ -13,7 +13,11 @@ public sealed record HouseholdContact(
     string? PreferredContactMethod = null,
     bool IsEmergencyContact = false,
     HouseholdPostalAddress? MailingAddress = null,
-    string? Notes = null);
+    string? Notes = null,
+    string? PortalAccessStatus = null,
+    DateTimeOffset? PortalAccessReviewedAtUtc = null,
+    string? PortalAccessReviewedByUserId = null,
+    string? PortalAccessReviewNotes = null);
 
 public sealed record HouseholdPostalAddress(
     string AddressLine1,

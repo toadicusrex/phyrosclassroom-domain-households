@@ -18,6 +18,7 @@ public static class HouseholdServiceCollectionExtensions
         services.AddHouseholdSharedServices(configuration);
         services.AddScoped<IRegisterHouseholdUseCase, RegisterHouseholdUseCase>();
         services.AddScoped<IUpdateHouseholdProfileUseCase, UpdateHouseholdProfileUseCase>();
+        services.AddScoped<IReviewHouseholdPortalAccessUseCase, ReviewHouseholdPortalAccessUseCase>();
         services.AddScoped<IGetHouseholdByIdUseCase, GetHouseholdByIdUseCase>();
         services.AddScoped<IGetHouseholdAtPointInTimeUseCase, GetHouseholdAtPointInTimeUseCase>();
         services.AddScoped<IGetHouseholdEventHistoryUseCase, GetHouseholdEventHistoryUseCase>();

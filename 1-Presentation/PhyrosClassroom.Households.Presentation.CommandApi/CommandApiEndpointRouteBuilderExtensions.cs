@@ -80,7 +80,11 @@ public static class CommandApiEndpointRouteBuilderExtensions
                             contact.MailingAddress.Region,
                             contact.MailingAddress.PostalCode,
                             contact.MailingAddress.CountryCode),
-                        contact.Notes)).ToArray(),
+                        contact.Notes,
+                        contact.PortalAccessStatus,
+                        contact.PortalAccessReviewedAtUtc,
+                        contact.PortalAccessReviewedByUserId,
+                        contact.PortalAccessReviewNotes)).ToArray(),
                     input.Students.Select(student => new Households.Models.HouseholdStudent(
                         student.StudentId,
                         student.StudentCode,
@@ -109,6 +113,25 @@ public static class CommandApiEndpointRouteBuilderExtensions
                         note.Body,
                         note.RecordedAtUtc,
                         note.RecordedByUserId)).ToArray()),
+                cancellationToken);
+
+            return Results.Ok(household);
+        });
+
+        group.MapPost("/{householdId:guid}/portal-access-review", async (
+            Guid householdId,
+            ReviewHouseholdPortalAccessInput input,
+            IReviewHouseholdPortalAccessUseCase useCase,
+            CancellationToken cancellationToken) =>
+        {
+            var household = await useCase.ExecuteAsync(
+                new ReviewHouseholdPortalAccessRequest(
+                    householdId,
+                    input.FullName,
+                    input.Email,
+                    input.Decision,
+                    input.ReviewedByUserId,
+                    input.ReviewNotes),
                 cancellationToken);
 
             return Results.Ok(household);
@@ -155,6 +178,10 @@ public sealed class HouseholdContactInput
     public bool IsEmergencyContact { get; set; }
     public HouseholdMailingAddressInput? MailingAddress { get; set; }
     public string? Notes { get; set; }
+    public string? PortalAccessStatus { get; set; }
+    public DateTimeOffset? PortalAccessReviewedAtUtc { get; set; }
+    public string? PortalAccessReviewedByUserId { get; set; }
+    public string? PortalAccessReviewNotes { get; set; }
 }
 
 public sealed class HouseholdMailingAddressInput
@@ -192,4 +219,13 @@ public sealed class HouseholdNoteInput
     public string Body { get; set; } = string.Empty;
     public DateTimeOffset RecordedAtUtc { get; set; }
     public string RecordedByUserId { get; set; } = string.Empty;
+}
+
+public sealed class ReviewHouseholdPortalAccessInput
+{
+    public string FullName { get; set; } = string.Empty;
+    public string? Email { get; set; }
+    public string Decision { get; set; } = "Approved";
+    public string ReviewedByUserId { get; set; } = string.Empty;
+    public string? ReviewNotes { get; set; }
 }
