@@ -67,7 +67,20 @@ public static class CommandApiEndpointRouteBuilderExtensions
                         contact.Email,
                         contact.Phone,
                         contact.IsPrimaryContact,
-                        contact.WantsPortalAccess)).ToArray(),
+                        contact.WantsPortalAccess,
+                        contact.AlternateEmail,
+                        contact.MobilePhone,
+                        contact.SecondaryPhone,
+                        contact.PreferredContactMethod,
+                        contact.IsEmergencyContact,
+                        contact.MailingAddress is null ? null : new Households.Models.HouseholdPostalAddress(
+                            contact.MailingAddress.AddressLine1,
+                            contact.MailingAddress.AddressLine2,
+                            contact.MailingAddress.City,
+                            contact.MailingAddress.Region,
+                            contact.MailingAddress.PostalCode,
+                            contact.MailingAddress.CountryCode),
+                        contact.Notes)).ToArray(),
                     input.Students.Select(student => new Households.Models.HouseholdStudent(
                         student.StudentId,
                         student.StudentCode,
@@ -135,6 +148,23 @@ public sealed class HouseholdContactInput
     public string Phone { get; set; } = string.Empty;
     public bool IsPrimaryContact { get; set; }
     public bool WantsPortalAccess { get; set; }
+    public string? AlternateEmail { get; set; }
+    public string? MobilePhone { get; set; }
+    public string? SecondaryPhone { get; set; }
+    public string? PreferredContactMethod { get; set; }
+    public bool IsEmergencyContact { get; set; }
+    public HouseholdMailingAddressInput? MailingAddress { get; set; }
+    public string? Notes { get; set; }
+}
+
+public sealed class HouseholdMailingAddressInput
+{
+    public string AddressLine1 { get; set; } = string.Empty;
+    public string? AddressLine2 { get; set; }
+    public string City { get; set; } = string.Empty;
+    public string Region { get; set; } = string.Empty;
+    public string PostalCode { get; set; } = string.Empty;
+    public string CountryCode { get; set; } = "US";
 }
 
 public sealed class HouseholdStudentInput

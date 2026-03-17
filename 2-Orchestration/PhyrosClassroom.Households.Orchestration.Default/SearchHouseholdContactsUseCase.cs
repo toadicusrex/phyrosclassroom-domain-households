@@ -19,7 +19,13 @@ public sealed class SearchHouseholdContactsUseCase(IHouseholdReadModelStore read
                 .Where(contact =>
                     contact.FullName.Contains(normalizedQuery, StringComparison.OrdinalIgnoreCase) ||
                     contact.Email.Contains(normalizedQuery, StringComparison.OrdinalIgnoreCase) ||
-                    contact.Phone.Contains(normalizedQuery, StringComparison.OrdinalIgnoreCase))
+                    contact.Phone.Contains(normalizedQuery, StringComparison.OrdinalIgnoreCase) ||
+                    (!string.IsNullOrWhiteSpace(contact.AlternateEmail) && contact.AlternateEmail.Contains(normalizedQuery, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrWhiteSpace(contact.MobilePhone) && contact.MobilePhone.Contains(normalizedQuery, StringComparison.OrdinalIgnoreCase)) ||
+                    (!string.IsNullOrWhiteSpace(contact.SecondaryPhone) && contact.SecondaryPhone.Contains(normalizedQuery, StringComparison.OrdinalIgnoreCase)) ||
+                    (contact.MailingAddress is not null && (
+                        contact.MailingAddress.City.Contains(normalizedQuery, StringComparison.OrdinalIgnoreCase) ||
+                        contact.MailingAddress.Region.Contains(normalizedQuery, StringComparison.OrdinalIgnoreCase))))
                 .Select(contact => new HouseholdContactSearchResult(
                     household.HouseholdId,
                     household.SubjectId,
@@ -30,7 +36,13 @@ public sealed class SearchHouseholdContactsUseCase(IHouseholdReadModelStore read
                     contact.Phone,
                     contact.IsPrimaryContact,
                     household.Students?.Count ?? 0,
-                    household.UpdatedAtUtc ?? household.RegisteredAtUtc)))
+                    household.UpdatedAtUtc ?? household.RegisteredAtUtc,
+                    contact.AlternateEmail,
+                    contact.MobilePhone,
+                    contact.PreferredContactMethod,
+                    contact.IsEmergencyContact,
+                    contact.MailingAddress?.City,
+                    contact.MailingAddress?.Region)))
             .OrderBy(result => result.HouseholdName)
             .ThenBy(result => result.FullName)
             .ToArray();
