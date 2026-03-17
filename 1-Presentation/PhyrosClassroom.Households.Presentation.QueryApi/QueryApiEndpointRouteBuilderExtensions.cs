@@ -36,6 +36,14 @@ public static class QueryApiEndpointRouteBuilderExtensions
             return Results.Ok(alerts);
         });
 
+        group.MapGet("/portal-access-review", async (
+            IListHouseholdPortalAccessReviewQueueUseCase useCase,
+            CancellationToken cancellationToken) =>
+        {
+            var items = await useCase.ExecuteAsync(cancellationToken);
+            return Results.Ok(items);
+        });
+
         group.MapGet("/{householdId:guid}", async (
             Guid householdId,
             IGetHouseholdReadModelByIdUseCase useCase,

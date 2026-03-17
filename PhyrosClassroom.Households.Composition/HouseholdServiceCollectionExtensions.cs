@@ -33,6 +33,7 @@ public static class HouseholdServiceCollectionExtensions
         services.AddScoped<IListHouseholdsUseCase, ListHouseholdsUseCase>();
         services.AddScoped<ISearchHouseholdContactsUseCase, SearchHouseholdContactsUseCase>();
         services.AddScoped<IListHouseholdOperationalAlertsUseCase, ListHouseholdOperationalAlertsUseCase>();
+        services.AddScoped<IListHouseholdPortalAccessReviewQueueUseCase, ListHouseholdPortalAccessReviewQueueUseCase>();
         services.AddScoped<IGetHouseholdReadModelByIdUseCase, GetHouseholdReadModelByIdUseCase>();
         services.AddScoped<IGetHouseholdReadModelBySubjectIdUseCase, GetHouseholdReadModelBySubjectIdUseCase>();
 
