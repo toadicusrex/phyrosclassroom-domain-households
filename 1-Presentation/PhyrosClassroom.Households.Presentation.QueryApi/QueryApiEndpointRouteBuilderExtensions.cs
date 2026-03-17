@@ -19,6 +19,15 @@ public static class QueryApiEndpointRouteBuilderExtensions
             return Results.Ok(households);
         });
 
+        group.MapGet("/contacts/search", async (
+            string q,
+            ISearchHouseholdContactsUseCase useCase,
+            CancellationToken cancellationToken) =>
+        {
+            var results = await useCase.ExecuteAsync(q, cancellationToken);
+            return Results.Ok(results);
+        });
+
         group.MapGet("/{householdId:guid}", async (
             Guid householdId,
             IGetHouseholdReadModelByIdUseCase useCase,

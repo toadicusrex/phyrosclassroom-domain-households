@@ -31,6 +31,7 @@ public static class HouseholdServiceCollectionExtensions
     {
         services.AddHouseholdSharedServices(configuration);
         services.AddScoped<IListHouseholdsUseCase, ListHouseholdsUseCase>();
+        services.AddScoped<ISearchHouseholdContactsUseCase, SearchHouseholdContactsUseCase>();
         services.AddScoped<IGetHouseholdReadModelByIdUseCase, GetHouseholdReadModelByIdUseCase>();
         services.AddScoped<IGetHouseholdReadModelBySubjectIdUseCase, GetHouseholdReadModelBySubjectIdUseCase>();
 
